@@ -10,6 +10,8 @@ Administrador de tareas en laravel
     composer install
     php artisan key:generate
     cp .env.example .env
+    create DB project-management
+    php artisan migate
 
 # Contributors
 
