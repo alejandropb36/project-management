@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.projectsIndex', compact('projects'));
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ProjectController extends Controller
     public function create()
     {
         // Nos regresa la vista del formulario
-        return view('projects.projectForm');
+        return view('projects.form');
     }
 
     /**
@@ -38,6 +38,14 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $project = new Project();
+        $project->name = $request->input('name');
+        $project->description = $request->input('description');
+        $project->status = "ACTIVO";
+        $project->start_date = $request->input('start_date');
+        $project->end_date = $request->input('end_date');
+        $project->save();
+        return redirect()->route('projects.index');
     }
 
     /**
