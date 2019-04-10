@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project Form</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <!-- ############################################## -->
+@extends('layouts.admin')
+@section('content')
     <div class="page-header">
         <div class="page-title">
             Agregar proyecto
@@ -36,7 +26,7 @@
                             <input type="text" class="form-control" name="description"  placeholder="Descripción del proyecto">
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group">
                             <label for="start_date" class="col-4 col-form-label">Fecha de inicio</label>
                             <div class="col-8">
                                 <input class="form-control" type="date" value="{{ date('Y-m-d') }}" name="start_date">
@@ -44,8 +34,7 @@
  
                         </div>
 
-                        <div class="form-group row">
-
+                        <div class="form-group">
                             <label for="end_date" class="col-4 col-form-label">Fecha de termino (opcional)</label>
                             <div class="col-8">
                                 <input class="form-control" type="date" name="end_date">
@@ -59,10 +48,4 @@
             </div>
         </div>
     </div>
-
-    <!-- ############################################## -->
-
-
-</body>
-</html>
-
+@endsection

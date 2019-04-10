@@ -117,10 +117,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      {{-- <h1>
         Contenido
         <small>Cuerpo de la pagina</small>
-      </h1>
+      </h1> --}}
     </section>
 
     <!-- Main content -->
@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Monthly Recap Report</h3>
+              <h3 class="box-title">Administrador de proyectos</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -154,10 +154,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
+                
+                 <!-- Optionally, you can add Slimscroll and FastClick plugins.
+                  Both of these plugins are recommended to enhance the
+                  user experience. -->
+                <div class="col-md-12">
+                  <main class="py-4">
+                    @yield('content')
+                  </main>
                 </div>
-                 
                 <!-- /.col -->
-              
+              </div>
               <!-- /.row -->
             </div>
             <!-- ./box-body -->
@@ -179,7 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Si se puede Imaginar se puede programar
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="https://github.com/alejandropb36/project-management">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="https://github.com/alejandropb36/project-management">Kevin y Alejandro</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -271,11 +278,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-  <main class="py-4">
-      @yield('content')
-  </main>
+
 </body>
 </html>
