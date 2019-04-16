@@ -8,6 +8,11 @@
             {{-- <a href="{{route('projects.create')}}">
                 <button class="btn btn-success">Nuevo</button>
             </a> --}}
+            @if(session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
           </div>
           <div class="card-body">
 
@@ -32,9 +37,14 @@
                         <td> {{ $project->start_date }} </td>
                         <td> {{ $project->end_date }} </td>
                         <td>
-                            {{-- <a href=" {{route('projects.show', $project->id)}} "> <button class="btn btn-info">Detalle</button> </a> --}}
-                            <a href="#"> <button class="btn btn-warning">Editar</button> </a>
-                            <a href="#"> <button class="btn btn-danger">Eliminar</button> </a>
+                            <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
+                            {{-- Para eliminar utilizando los metodos HTTP correctamente
+                                Se hace lo siguiente --}}
+                            <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Borrar</button>
+                            </form>
                         </td>
                         
                     </tr>

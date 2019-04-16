@@ -66,9 +66,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
         //
+        return view('projects.form', compact('project'));
     }
 
     /**
@@ -78,9 +79,19 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
         //
+        $project->name = $request->input('name');
+        $project->description = $request->input('description');
+        $project->status = "ACTIVO";
+        $project->start_date = $request->input('start_date');
+        $project->end_date = $request->input('end_date');
+
+        $project->update();
+        return redirect()->route('projects.show', $project->id)
+                        ->with(['message' => 'El proyecto se atualizo corectamente']);
+
     }
 
     /**
@@ -89,8 +100,11 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
         //
+        $project->delete();
+        return redirect()->route('projects.index')
+                        ->with(['message' => 'Proyecto eliminado correctamente']);
     }
 }

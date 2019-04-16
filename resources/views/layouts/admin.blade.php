@@ -91,17 +91,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="treeview">
+        {{-- Esto es para hacer un menu desplegable  --}}
+        {{-- <li class="treeview">
           <a href="#"><i class="fas fa-folder-open"></i> <span>Proyectos</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
-              </span>
+            </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Completados</a></li>
+            <li><a href="">Completados</a></li>
             <li><a href="#">En proceso</a></li>
           </ul>
-        </li>
+        </li> --}}
+        <li>
+            <a href=" {{route('projects.index')}} ">
+              <i class="fas fa-folder-open"></i> <span>Proyectos</span>
+            </a>
+          </li>
         <li class="treeview">
           <a href="#"><i class="fas fa-address-card"></i> <span>Usuarios</span>
 
