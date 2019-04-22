@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProjectController@index')->name('home');
 
 Route::get('/inicio', function () {
     return view('inicio');
 });
 
 Route::resource('/projects', 'ProjectController');
+Route::resource('/homeworks', 'HomeworkController');

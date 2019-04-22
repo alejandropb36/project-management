@@ -45,7 +45,7 @@ class ProjectController extends Controller
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->save();
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index'); 
     }
 
     /**

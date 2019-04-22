@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
-    <?php $npagina= "PROYECTOS"?>
     <div class="col-lg-10 col-md-10 col-sd-10 col-xs-10 ">
         <div class="card">
           <div class="card-header">
@@ -10,9 +9,9 @@
                     {{ session('message') }}
                 </div>
             @endif
-            <h3 class="card-title">Listado de Proyectos</h3>
-            <a href="{{route('projects.create')}}">
-                <button class="btn btn-success">Nuevo</button>
+            <h3 class="card-title">Listado de Tareas</h3>
+            <a href="{{route('homeworks.create')}}">
+                <button class="btn btn-success">Nueva</button>
             </a>
           </div>
           <div class="card-body">
@@ -22,17 +21,16 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Estatus</th>
-                        <th>Detalle</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($projects as $project)
+                    @foreach($homeworks as $homework)
                         <tr>
-                            <td> {{ $project->id }} </td>
-                            <td> {{ $project->name }} </td>
-                            <td> {{ $project->status }} </td>
+                            <td> {{ $homework->id }} </td>
+                            <td> {{ $homework->name }} </td>
+                            <td> {{ $homework->status }} </td>
                             <td>
-                                <a href=" {{route('projects.show', $project->id)}} "> <button class="btn btn-info">Detalle</button> </a>
+                                <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
                             </td>
                             
                         </tr>
