@@ -23,4 +23,14 @@ Route::get('/inicio', function () {
     return view('inicio');
 });
 
+/**
+ * Rutas para Controlador de proyectos (resourse)
+ */
 Route::resource('/projects', 'ProjectController');
+
+/**
+ * Rutas de Usuarios
+ */
+Route::get('/configuracion', 'UserController@config')->name('config');
+Route::post('/user/update', 'UserController@update')->name('user.update');
+Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('user.avatar');

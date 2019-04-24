@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        return view('project.index', compact('projects'));
     }
 
     /**
@@ -26,7 +31,7 @@ class ProjectController extends Controller
     public function create()
     {
         // Nos regresa la vista del formulario
-        return view('projects.form');
+        return view('project.form');
     }
 
     /**
@@ -57,7 +62,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view('projects.show', compact('project'));
+        return view('project.show', compact('project'));
     }
 
     /**
@@ -69,7 +74,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
-        return view('projects.form', compact('project'));
+        return view('project.form', compact('project'));
     }
 
     /**
