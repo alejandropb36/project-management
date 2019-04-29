@@ -17,7 +17,10 @@ class HomeworkController extends Controller
         $homeworks = Homework::all();
         return view('homeworks.index', compact('homeworks'));
     }
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +43,7 @@ class HomeworkController extends Controller
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
+        $homework->project_id = "1";
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
@@ -81,6 +85,7 @@ class HomeworkController extends Controller
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
+        $homework->project_id = "1";
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
@@ -99,7 +104,7 @@ class HomeworkController extends Controller
     public function destroy(Homework $homework)
     {
         //
-        $project->delete();
+        $homework->delete();
         return redirect()->route('homeworks.index')
                         ->with(['message' => 'Tarea eliminada correctamente']);
     }

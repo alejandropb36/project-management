@@ -17,7 +17,10 @@ class ProjectController extends Controller
         $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      *
