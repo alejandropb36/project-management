@@ -30,7 +30,12 @@
                                 value=" {{ isset($homework) ? $homework->name : '' }}{{ old('homework') }} "
                                 placeholder="Nombre de la tarea">
                         </div>
-
+                        <div class="form-group ">
+                                <label class="form-label">Usuario</label>
+                                <input type="text" class="form-control" name="user_id" 
+                                value=" {{ isset($homework) ? $homework->user_id : '' }}{{ old('homework') }} "
+                                placeholder="ID Usuario">
+                        </div>
                         <div class="form-group ">
                             <label class="form-label">Descripción</label>
                             <input type="text" class="form-control" name="description"

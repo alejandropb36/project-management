@@ -8,5 +8,4 @@ class Homework extends Model
 {
     // Table
     protected $table = 'homeworks';
-
 }

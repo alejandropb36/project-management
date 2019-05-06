@@ -44,6 +44,7 @@ class HomeworkController extends Controller
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
         $homework->project_id = "1";
+        $homework->user_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
@@ -86,13 +87,13 @@ class HomeworkController extends Controller
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
         $homework->project_id = "1";
+        $homework->users_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
-
         $homework->update();
         return redirect()->route('homeworks.show', $homework->id)
-                         ->with(['message' => 'La tarea se atualizo corectamente']); 
+                         ->with(['message' => 'La tarea se atualizo correctamente']); 
     }
 
     /**

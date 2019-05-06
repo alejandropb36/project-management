@@ -16,6 +16,7 @@ class CreateHomeworksTable extends Migration
         Schema::create('homeworks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name',255);
             $table->string('description',255)->nullable();         
             $table->string('status',255);
@@ -25,6 +26,7 @@ class CreateHomeworksTable extends Migration
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -21,6 +21,8 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Estatus</th>
+                        <th>Proyecto</th>
+                        <th>Usuario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,10 +31,11 @@
                             <td> {{ $homework->id }} </td>
                             <td> {{ $homework->name }} </td>
                             <td> {{ $homework->status }} </td>
+                            <td> {{ $homework->project_id }} </td>
+                            <td> {{ $homework->user_id }} </td>
                             <td>
                                 <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
                             </td>
-                            
                         </tr>
                     @endforeach
                 </tbody>
