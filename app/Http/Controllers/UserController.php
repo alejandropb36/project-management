@@ -71,4 +71,6 @@ class UserController extends Controller
         $file = Storage::disk('users')->get($filename);
         return new Response($file, 200);
     }
+
+    
 }

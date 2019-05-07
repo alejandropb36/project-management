@@ -19,7 +19,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $user = \Auth::user();
+        $projects = $user->projects;
         return view('project.index', compact('projects'));
     }
 
@@ -43,14 +44,17 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $user = $user = \Auth::user();
         $project = new Project();
         $project->name = $request->input('name');
         $project->description = $request->input('description');
-        $project->status = "ACTIVO";
+        $project->status = "Activo";
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->save();
+        $user->projects()->attach($project->id, ['user_role' => 'Administrador']);
         return redirect()->route('projects.index');
+
     }
 
     /**
