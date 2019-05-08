@@ -10,7 +10,7 @@ class Project extends Model
     protected $table = 'projects';
 
     public function users(){
-        return belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('user_role')->withTimestamps();
     }
 
 }

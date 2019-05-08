@@ -37,6 +37,19 @@
                                 value="{{ isset($project) ? $project->description : '' }}{{ old('project') }}"
                                 placeholder="Descripción del proyecto">
                         </div>
+                        
+                        <div class="form-group ">
+                            <label class="form-label">Estatus</label>
+                            <select name="status"  class="form-control">
+                                <option value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}" disabled selected> </option>
+                                <option value="Activo">Activo</option>
+                                <option value="Terminado">Terminado</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                            {{-- <input type="text" class="form-control" name="description"
+                                value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}"
+                                placeholder="Descripción del proyecto"> --}}
+                        </div>
 
                         <div class="form-group">
                             <label for="start_date" class="col-4 col-form-label">Fecha de inicio</label>

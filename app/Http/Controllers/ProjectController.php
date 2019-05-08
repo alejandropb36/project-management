@@ -46,15 +46,16 @@ class ProjectController extends Controller
         //
         $user = $user = \Auth::user();
         $project = new Project();
+
         $project->name = $request->input('name');
         $project->description = $request->input('description');
-        $project->status = "Activo";
+        $project->status = $request->input('status');
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
         $project->save();
-        $user->projects()->attach($project->id, ['user_role' => 'Administrador']);
-        return redirect()->route('projects.index');
+        $user->projects()->attach($project->id, ['user_role' => 'Lider']);
 
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -66,7 +67,16 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view('project.show', compact('project'));
+        $user_role = "Colaborador";
+        $user_auth = \Auth::user();
+
+        foreach($project->users as $user){
+            if($user->id == $user_auth->id){
+                $user_role = $user->pivot->user_role;
+            }
+        }
+
+        return view('project.show', compact('project','user_role'));
     }
 
     /**
@@ -93,7 +103,7 @@ class ProjectController extends Controller
         //
         $project->name = $request->input('name');
         $project->description = $request->input('description');
-        $project->status = "ACTIVO";
+        $project->status = $request->input('status');
         $project->start_date = $request->input('start_date');
         $project->end_date = $request->input('end_date');
 
@@ -113,7 +123,15 @@ class ProjectController extends Controller
     {
         //
         $project->delete();
+
         return redirect()->route('projects.index')
                         ->with(['message' => 'Proyecto eliminado correctamente']);
+    }
+
+    /**
+     * Relashiotsip Project and user
+     */
+    public  function addProjectUser(Project $project){
+        
     }
 }

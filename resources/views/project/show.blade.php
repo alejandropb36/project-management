@@ -37,14 +37,22 @@
                         <td> {{ $project->start_date }} </td>
                         <td> {{ $project->end_date }} </td>
                         <td>
-                            <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
+                            {{-- Esto fue parte de una prueba para comprobar el role
+                                {{$user_role}}
+                            --}}
+
+                            @if($user_role == "Lider")
+                                <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-primary">Agregar colaborador</button> </a>
+                                <a href=" {{ route('addPorjectUser', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
+                            @endif
+                            
                             {{-- Para eliminar utilizando los metodos HTTP correctamente
-                                Se hace lo siguiente --}}
-                            <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
+                                Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
+                            {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Borrar</button>
-                            </form>
+                            </form> --}}
                         </td>
                         
                     </tr>
