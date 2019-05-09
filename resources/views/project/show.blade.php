@@ -45,7 +45,7 @@
                                 --}}
 
                                 
-                                <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-primary">Agregar colaborador</button> </a>
+                                <a href=" {{ route('projects.createProjectUser', $project->id) }} "> <button class="btn btn-primary">Agregar colaborador</button> </a>
                                 <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
                                 
                                 

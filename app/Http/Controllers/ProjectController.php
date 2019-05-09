@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -130,9 +131,26 @@ class ProjectController extends Controller
     }
 
     /**
-     * Relashiotsip Project and user
+     * Relationship project_user Form
      */
-    public  function addProjectUser(Project $project){
+    public function createProjectUser(Project $project){
+        $users = User::all();
+        return view('project.projectUserForm',compact('project', 'users'));
+    }
+
+    /**
+     * Store relationship project_user
+     */
+    public function storeProjectUser(Request $request){
+        $project_id = $request->input('project_id');
+        $user_id = $request->input('user_id');
+        $user_role = $request->input('role');
         
+        $project = Project::find($project_id);
+
+        $project->users->attach($user_id, ['user_role' => $user_role]);
+
+        return redirect()->route('projects.show', $project->id)
+                        ->with(['message' => 'Usuario agregador correctamente']);
     }
 }

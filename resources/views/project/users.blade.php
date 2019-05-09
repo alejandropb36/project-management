@@ -31,7 +31,11 @@
                         
                         <td> {{ $user->id }} </td>
                         <td>
-                            @include('includes.avatar')
+                            @if($user->image)
+                                <div class="container-avatar">
+                                    <img src=" {{ route('user.avatar', ['filename' => $user->image])}} " alt="Avatar de usuario" class="avatar">
+                                </div>
+                            @endif
                         </td>
                         <td> {{ $user->name }} </td>
                         <td> {{ $user->email }} </td>
@@ -42,11 +46,11 @@
                                 
                                 {{-- Para eliminar utilizando los metodos HTTP correctamente
                                     Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
-                                <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
+                                {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Borrar</button>
-                                </form>
+                                </form> --}}
                             </td>
                         @endif
                         
