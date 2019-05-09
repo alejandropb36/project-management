@@ -141,6 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        <!-- ------------ Main Box ---------------------------- -->
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
@@ -184,8 +185,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
+          <!-- ------------ ./ Main Box ---------------------------- -->
         </div>
-
     </section>
     <!-- /.content -->
   </div>

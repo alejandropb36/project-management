@@ -27,7 +27,7 @@ Route::get('/inicio', function () {
  * Rutas para Controlador de proyectos (resourse)
  */
 Route::resource('/projects', 'ProjectController');
-Route::get('/projects/addProjectUser/{project}', 'ProjectController@addProjectUser')->name('project.addProjectUser');
+Route::get('/projects/addProjectUser/{project}', 'ProjectController@addProjectUser')->name('projects.addProjectUser');
 
 /**
  * Rutas de Usuarios

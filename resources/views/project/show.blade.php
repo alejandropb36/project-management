@@ -25,7 +25,9 @@
                         <th>Estatus</th>
                         <th>Fecha de inicio</th>
                         <th>Fecha de termino</th>
-                        <th>Opciones</th>
+                        @if($user_role == "Lider")
+                            <th>Opciones</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -36,24 +38,26 @@
                         <td> {{ $project->status }} </td>
                         <td> {{ $project->start_date }} </td>
                         <td> {{ $project->end_date }} </td>
-                        <td>
-                            {{-- Esto fue parte de una prueba para comprobar el role
-                                {{$user_role}}
-                            --}}
+                        @if($user_role == "Lider")
+                            <td>
+                                {{-- Esto fue parte de una prueba para comprobar el role
+                                    {{$user_role}}
+                                --}}
 
-                            @if($user_role == "Lider")
+                                
                                 <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-primary">Agregar colaborador</button> </a>
-                                <a href=" {{ route('addPorjectUser', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
-                            @endif
-                            
-                            {{-- Para eliminar utilizando los metodos HTTP correctamente
-                                Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
-                            {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Borrar</button>
-                            </form> --}}
-                        </td>
+                                <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
+                                
+                                
+                                {{-- Para eliminar utilizando los metodos HTTP correctamente
+                                    Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
+                                {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Borrar</button>
+                                </form> --}}
+                            </td>
+                        @endif
                         
                     </tr>
                 </tbody>
@@ -63,4 +67,9 @@
         </div>
     </div>
 </div>
+
+{{-- Listado de usuarios --}}
+@include('project.users')
+{{-- Listado de tareas --}}
+
 @endsection
