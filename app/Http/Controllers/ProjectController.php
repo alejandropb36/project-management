@@ -134,7 +134,8 @@ class ProjectController extends Controller
      * Relationship project_user Form
      */
     public function createProjectUser(Project $project){
-        $users = User::all();
+        $users = User::with('projects')->get();
+
         return view('project.projectUserForm',compact('project', 'users'));
     }
 

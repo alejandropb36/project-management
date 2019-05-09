@@ -21,8 +21,9 @@
                             <label class="form-label">Usuario</label>
                             <select name="user_id" id="user">
                                 @foreach ($users as $user)
-                                {{--    Aqui va la condicion para los usuarios que ya estan  --}}
-                                    <option value=" {{ $user->id }} "> {{ $user->id . ' - ' . $user->name }} </option>
+                                    @if(!$user->projects->find($project->id))
+                                        <option value=" {{ $user->id }} "> {{ $user->id . ' - ' . $user->name }} </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -34,7 +35,7 @@
                                 <option value="Lider">Lider</option>
                             </select>
                         </div>
-                        
+                        {{"Hola"}}
                         <button class="btn btn-primary ml-auto" type="submit">Guardar</button>
                     </form>  
                         
