@@ -35,7 +35,6 @@
                                 <option value="Lider">Lider</option>
                             </select>
                         </div>
-                        {{"Hola"}}
                         <button class="btn btn-primary ml-auto" type="submit">Guardar</button>
                     </form>  
                         

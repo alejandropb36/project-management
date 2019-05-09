@@ -4,11 +4,11 @@
           <div class="card-header">
             <h3 class="card-title">Users </h3>
             
-            @if(session('message'))
+            {{-- @if(session('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
-            @endif
+            @endif --}}
           </div>
           <div class="card-body">
 
