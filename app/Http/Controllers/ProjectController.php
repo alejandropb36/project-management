@@ -145,13 +145,25 @@ class ProjectController extends Controller
     public function storeProjectUser(Request $request){
         $project_id = $request->input('project_id');
         $user_id = $request->input('user_id');
-        $user_role = $request->input('role');
+        $user_role = $request->input('user_role');
         
         $project = Project::find($project_id);
-
-        $project->users->attach($user_id, ['user_role' => $user_role]);
+    
+        $project->users()->attach($user_id, ["user_role" => $user_role]);
 
         return redirect()->route('projects.show', $project->id)
                         ->with(['message' => 'Usuario agregador correctamente']);
     }
+
+    /**
+     * Editar rol del usuario
+     */
+    public function editUserRole(Project $project, User $user){
+
+        $this->project = $project;
+        $this->user = $user;
+
+        return view('project.editUserRole', compact('project', 'user'));
+    }
+
 }

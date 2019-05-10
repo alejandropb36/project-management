@@ -28,7 +28,9 @@ Route::get('/inicio', function () {
  */
 Route::resource('/projects', 'ProjectController');
 Route::get('/projects/createProjectUser/{project}', 'ProjectController@createProjectUser')->name('projects.createProjectUser');
-Route::post('/projects/storeProjectUSer', 'ProjectController@storeProjectUser')->name('projects.storeProjectUser');
+Route::post('/projects/storeProjectUser', 'ProjectController@storeProjectUser')->name('projects.storeProjectUser');
+Route::get('/projects/editUserRole/{project}/{user}', 'ProjectController@editUserRole')->name('projects.editUserRole');
+Route::post('/projects/updateUserRole', 'ProjectController@updateUserRole')->name('projects.updateUserRole');
 
 /**
  * Rutas de Usuarios

@@ -41,7 +41,9 @@
                         <div class="form-group ">
                             <label class="form-label">Estatus</label>
                             <select name="status"  class="form-control">
-                                <option value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}" disabled selected> </option>
+                                <option value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}" selected disabled>
+                                    {{ isset($project) ? $project->status : '' }}{{ old('project') }}
+                                </option>
                                 <option value="Activo">Activo</option>
                                 <option value="Terminado">Terminado</option>
                                 <option value="Inactivo">Inactivo</option>

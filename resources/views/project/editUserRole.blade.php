@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-header">
         <div class="page-title">
-            Agregar usuario al proyecto :   {{ $project->name }}
+            Editar rol de usuario en el proyecto :   {{ $project->name }}
         </div>
     </div>
     <div class="row">
@@ -12,7 +12,7 @@
                     
                 </div>
                 <div class="card-body">
-                    <form action=" {{ route('projects.storeProjectUser') }} " method="POST" >
+                    <form action=" {{ route('projects.updateUserRole') }} " method="POST" >
                         @csrf
 
                         <div class="form-group " hidden>
@@ -20,15 +20,13 @@
                                 value="{{ $project->id }} ">
                         </div>
 
-                        <div class="form-group ">
-                            <label class="form-label">Usuario</label>
-                            <select name="user_id" id="user">
-                                @foreach ($users as $user)
-                                    @if(!$user->projects->find($project->id))
-                                        <option value=" {{ $user->id }} "> {{ $user->id . ' - ' . $user->name }} </option>
-                                    @endif
-                                @endforeach
-                            </select>
+                        <div class="form-group " >
+                            <label class="form-label" >{{ $user->id . ' - ' . $user->name }}</label>
+                        </div>
+                        
+                        <div class="form-group " hidden>
+                            <input type="text" class="form-control" name="project_id" 
+                                value="{{ $user->id }} ">
                         </div>
                         
                         <div class="form-group ">

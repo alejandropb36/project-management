@@ -42,8 +42,9 @@
                         <td> {{ $user->pivot->user_role }} </td>
                         @if($user_role == "Lider")
                             <td>
-                                <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
+                                <a href=" {{ route('projects.editUserRole', ['project' => $project, 'user' => $user]) }} "> <button class="btn btn-warning">Editar</button> </a>
                                 
+
                                 {{-- Para eliminar utilizando los metodos HTTP correctamente
                                     Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
                                 {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
