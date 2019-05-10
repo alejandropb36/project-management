@@ -166,4 +166,16 @@ class ProjectController extends Controller
         return view('project.editUserRole', compact('project', 'user'));
     }
 
+    /**
+     * Update rol del usuario
+     */
+    public function updateUserRole(Request $request){
+
+        $project_id = $request->input('project_id');
+        $user_id = $request->input('user_id');
+        $user_role = $request->input('user_role');
+
+        return view('project.editUserRole', compact('project', 'user'));
+    }
+
 }
