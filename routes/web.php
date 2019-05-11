@@ -31,6 +31,8 @@ Route::get('/projects/create-project-user/{project}', 'ProjectController@createP
 Route::post('/projects/store-project-user', 'ProjectController@storeProjectUser')->name('projects.storeProjectUser');
 Route::get('/projects/edit-user-role/{project}/{user}', 'ProjectController@editUserRole')->name('projects.editUserRole');
 Route::post('/projects/update-user-role', 'ProjectController@updateUserRole')->name('projects.updateUserRole');
+Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectController@destroyProjectUser')
+    ->name('projects.destroyProjectUser');
 
 /**
  * Rutas de Usuarios

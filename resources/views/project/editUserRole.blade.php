@@ -21,11 +21,11 @@
                         </div>
 
                         <div class="form-group " >
-                            <label class="form-label" >{{ $user->id . ' - ' . $user->name }}</label>
+                            <label class="form-label" >{{ $user->id . ' - ' . $user->name . ' - ' . $user_role }}</label>
                         </div>
                         
                         <div class="form-group " hidden>
-                            <input type="text" class="form-control" name="project_id" 
+                            <input type="text" class="form-control" name="user_id" 
                                 value="{{ $user->id }} ">
                         </div>
                         

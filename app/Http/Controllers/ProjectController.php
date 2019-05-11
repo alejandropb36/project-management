@@ -162,8 +162,10 @@ class ProjectController extends Controller
 
         $this->project = $project;
         $this->user = $user;
+        $user_role = $project->users->find($user);
+        $user_role = $user_role->pivot->user_role;
 
-        return view('project.editUserRole', compact('project', 'user'));
+        return view('project.editUserRole', compact('project', 'user', 'user_role'));
     }
 
     /**
@@ -175,7 +177,35 @@ class ProjectController extends Controller
         $user_id = $request->input('user_id');
         $user_role = $request->input('user_role');
 
-        return view('project.editUserRole', compact('project', 'user'));
+        $project = Project::find($project_id);
+
+        /**
+         * Documentacion de laravel
+         * Updating A Record On A Pivot Table
+         */
+        $project->users()->updateExistingPivot($user_id, ['user_role' => $user_role]);
+        /**
+         * Esta forma funciona, la deduje yo, la otra 
+         * es de la documentacion de laravel.
+         */
+        /*
+        $user = $project->users;
+        $user = $user->find($user_id);
+        $user->pivot->user_role = $user_role;
+        $user->pivot->update();
+        */
+
+        return redirect()->route('projects.show', $project->id)
+                        ->with(['message' => 'Rol de usuario modificado correctamente']);
     }
 
+    /**
+     * Remove relationship user_project
+     */
+    public function destroyProjectUser(Project $project, User $user){
+        $project->users()->detach($user);
+
+        return redirect()->route('projects.show', $project->id)
+                        ->with(['message' => 'Usuario eliminado correctamente']);
+    }
 }

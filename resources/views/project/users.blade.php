@@ -43,15 +43,13 @@
                         @if($user_role == "Lider")
                             <td>
                                 <a href=" {{ route('projects.editUserRole', ['project' => $project, 'user' => $user]) }} "> <button class="btn btn-warning">Editar</button> </a>
-                                
-
                                 {{-- Para eliminar utilizando los metodos HTTP correctamente
                                     Se hace lo siguiente, esto queda temporalmente comentado ya que no se necesita --}}
-                                {{-- <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
+                                <form action=" {{ route('projects.destroyProjectUser', ['project' => $project, 'user' => $user]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Borrar</button>
-                                </form> --}}
+                                </form>
                             </td>
                         @endif
                         
