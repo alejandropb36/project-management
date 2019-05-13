@@ -94,7 +94,6 @@ class ProjectController extends Controller
         $project->update();
         return redirect()->route('projects.show', $project->id)
                         ->with(['message' => 'El proyecto se atualizo corectamente']);
-
     }
 
     /**
@@ -109,5 +108,11 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('projects.index')
                         ->with(['message' => 'Proyecto eliminado correctamente']);
+    }
+    public function SA(Project $project)
+    {
+        //
+        return redirect()->route('projects.index')
+                        ->with(['message' => 'Ninguna tarea asignada']);
     }
 }

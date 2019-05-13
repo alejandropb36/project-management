@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Homework;
+use App\User;
+use App\Project;
 use Illuminate\Http\Request;
 
 class HomeworkController extends Controller
@@ -26,9 +28,14 @@ class HomeworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('homeworks.form');
+        $users = User::all();
+        /*$project = Project::all();*/
+        /*return view('homeworks.form', compact('project'));*/
+        /*$project = $this->project;
+        $users = $project->users;*/
+        return view('homeworks.form', compact('users','project'));
     }
 
     /**
@@ -43,13 +50,13 @@ class HomeworkController extends Controller
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
-        $homework->project_id = "1";
+        $homework->project_id = $request->input('project_id');
         $homework->user_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->save();
-        return redirect()->route('homeworks.index'); 
+        return redirect()->route('homeworks.index');
     }
 
     /**
@@ -69,10 +76,14 @@ class HomeworkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Homework $homework)
+    public function edit(Homework $homework,Project $project)
     {
-        return view('homeworks.form', compact('homework'));
+        $users = User::all();
+        return view('homeworks.form', compact('homework','users','project'));
     }
+
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -86,7 +97,7 @@ class HomeworkController extends Controller
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
-        $homework->project_id = "1";
+        $homework->project_id = $request->input('project_id');
         $homework->users_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');

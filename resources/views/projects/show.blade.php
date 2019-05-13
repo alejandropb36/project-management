@@ -38,11 +38,12 @@
                         <td> {{ $project->end_date }} </td>
                         <td width=100>
                             <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning"><i class="far fa-edit"></i></button> </a>{{--Editar--}}
+                            <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
                             {{-- Para eliminar utilizando los metodos HTTP correctamente
                                 Se hace lo siguiente --}}
-                            <form action=" {{ route('projects.destroy', $project->id) }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 @csrf
+                                {{--@csrf_field('DELETE')--}}
                                 <button type="submit" class="btn btn-danger"><i class="far fa-times-circle"></i></button>{{--Eliminar--}}
                             </form>
                         </td>                   
@@ -68,8 +69,11 @@
                 </tr>
             </thead>
             <tbody>
+                <a href="{{route('homeworks.createnp', $project->id)}}">
+                        <button class="btn btn-success">Nueva</button>
+                </a>
                 @foreach($project->homeworks as $homework)
-                    @if($homework->user_id==Auth::user()->id)
+                    {{-- @if($homework->user_id==Auth::user()->id) --}}
                     <tr>
                         <td> {{ $homework->id }} </td>
                         <td> {{ $homework->name }} </td>
@@ -80,7 +84,11 @@
                             <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
                         </td>
                     </tr>
-                    @endif
+                    {{--@else
+                    <font color="red">
+                        <h3 class="card-title" align="center">Ninguna Tarea Asignada</h3>
+                    </font>--}}
+                    {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>

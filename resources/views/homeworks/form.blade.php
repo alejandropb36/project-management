@@ -23,7 +23,10 @@
                         <form action="{{ route('homeworks.store') }}" method="POST">
                     @endif
                         @csrf
-
+                        <div class="form-group ">
+                        {{-- <input type="hidden" class="form-control" name="project_id" value="{{$project->id}}"> --}}
+                        <input type="hidden" class="form-control" name="project_id" value="{{ isset($homework) ? $homework->project_id : $project->id }}{{ old('homework') }}">
+                        </div>
                         <div class="form-group ">
                             <label class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="name" 
@@ -32,9 +35,19 @@
                         </div>
                         <div class="form-group ">
                                 <label class="form-label">Usuario</label>
-                                <input type="text" class="form-control" name="user_id" 
-                                value=" {{ isset($homework) ? $homework->user_id : '' }}{{ old('homework') }} "
-                                placeholder="ID Usuario">
+                                {{--<input type="text" class="form-control" name="user_id" 
+                                value=" {{ isset($homework) ? $homework->user_id : '' }}{{ old('homework') }}"placeholder="ID Usuario">--}}
+                                <select class="form-control" name="user_id">
+                                @if(isset($homework))
+                                    @foreach($users as $user)
+                                        <option value="{{$homework->user_id}}">{{$homework->user_id}}</option> 
+                                    @endforeach
+                                @else
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}"> {{$user->name}} </option> 
+                                    @endforeach
+                                @endif
+                                </select>
                         </div>
                         <div class="form-group ">
                             <label class="form-label">Descripción</label>
@@ -56,9 +69,7 @@
                                 <input class="form-control" type="date" name="start_date"
                                     value="{{ isset($homework) ? $homework->start_date : '' }}{{ old('homework') }}" >
                             </div>
- 
                         </div>
-
                         <div class="form-group">
                             <label for="end_date" class="col-4 col-form-label">Fecha de termino (opcional)</label>
                             <div class="col-8">

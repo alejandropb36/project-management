@@ -24,6 +24,7 @@ Route::get('/home', 'ProjectController@index')->name('home');
 
 Route::resource('/projects', 'ProjectController');
 Route::resource('/homeworks', 'HomeworkController');
+Route::get('/create/{project}', 'HomeworkController@create')->name('homeworks.createnp');
 
 /*Route::get('/prueba', function () {
     $projects = Project::all();
