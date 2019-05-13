@@ -21,23 +21,24 @@ Auth::routes();
 
 Route::get('/home', 'ProjectController@index')->name('home');
 
-
 Route::resource('/projects', 'ProjectController');
 Route::resource('/homeworks', 'HomeworkController');
 Route::get('/create/{project}', 'HomeworkController@create')->name('homeworks.createnp');
 
-/*Route::get('/prueba', function () {
-    $projects = Project::all();
-    foreach($projects as $project)
-    {
-        echo $project->name;
-        echo $project->description;
-        
-        echo '<br><strong>Nombre de Tareas</strong><br>'; 
-        foreach($project->homeworks as $homework)
-        {
-            echo $homework->name.'<br>';
-        }
-    }
-    die();
-});*/
+/**
+ * Rutas para Controlador de proyectos (resourse)
+ */
+Route::resource('/projects', 'ProjectController');
+Route::get('/projects/create-project-user/{project}', 'ProjectController@createProjectUser')->name('projects.createProjectUser');
+Route::post('/projects/store-project-user', 'ProjectController@storeProjectUser')->name('projects.storeProjectUser');
+Route::get('/projects/edit-user-role/{project}/{user}', 'ProjectController@editUserRole')->name('projects.editUserRole');
+Route::post('/projects/update-user-role', 'ProjectController@updateUserRole')->name('projects.updateUserRole');
+Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectController@destroyProjectUser')
+    ->name('projects.destroyProjectUser');
+
+/**
+ * Rutas de Usuarios
+ */
+Route::get('/configuracion', 'UserController@config')->name('config');
+Route::post('/user/update', 'UserController@update')->name('user.update');
+Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('user.avatar');

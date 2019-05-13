@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'nick', 'email', 'password',
     ];
 
     /**
@@ -36,8 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function homeworks()
     {
-            return $this->hasMany('App\Homework');
+        return $this->hasMany('App\Homework');
+    }
+
+    public function projects(){
+        return $this->belongsToMany(Project::class)->withPivot('user_role')->withTimestamps();
     }
 }

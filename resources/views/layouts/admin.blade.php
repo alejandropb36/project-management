@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -50,7 +52,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Tasks Menu -->
-          
+          <li class="nav-link">
+            @include('includes.avatar')
+          </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -62,11 +66,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footert">
                 <div class="pull-right">
-                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat"onclick="event.preventDefault();
+                  <a href="{{ route('config') }}" class="dropdown-item">
+                    Configuración
+                  </a>
+                  <br>
+                  <a href="{{ route('logout') }}"  class="dropdown-item" onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}</a>
+                      {{ __('Logout') }}
+                  </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                   </form>
@@ -108,11 +117,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="fas fa-folder-open"></i> <span>Proyectos</span>
             </a>
           </li>
-        <li class="treeview">
-          <a href="#"><i class="fas fa-address-card"></i> <span>Usuarios</span>
-
-          </a>
-        </li>
+        {{-- <li class="treeview">
+          <a href="#"><i class="fas fa-address-card"></i> <span>Usuarios</span></a>
+        </li>--}}
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -135,11 +142,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        <!-- ------------ Main Box ---------------------------- -->
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">DETALLADO</h3>
               <div class="box-tools pull-right">
+
+              {{-- ### Esto es del minimizado y demas ### --}}
+
+              {{-- <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <div class="btn-group">
@@ -154,7 +166,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </ul>
                 </div>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              </div> --}}
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -177,8 +190,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
+          <!-- ------------ ./ Main Box ---------------------------- -->
         </div>
-
     </section>
     <!-- /.content -->
   </div>
