@@ -98,7 +98,7 @@ class HomeworkController extends Controller
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";
         $homework->project_id = $request->input('project_id');
-        $homework->users_id = $request->input('user_id');
+        $homework->user_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');

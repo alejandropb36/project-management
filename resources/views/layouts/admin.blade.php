@@ -61,24 +61,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{ Auth::user()->name }}</span>
+              <span class="hidden-xs">{{ Auth::user()->nick }}</span>
             </a>
+
             <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{ route('user.avatar', ['filename' => Auth::user()->image])}}" class="img-circle" alt="User Image">
+                <p>
+                  {{ Auth::user()->name }}
+                </p>
+              </li>
               <!-- Menu Footer-->
-              <li class="user-footert">
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ route('config') }}" class="btn btn-default btn-flat">
+                    Perfil
+                  </a>
+                </div>
                 <div class="pull-right">
-                  <a href="{{ route('config') }}" class="dropdown-item">
-                    Configuración
-                  </a>
-                  <br>
-                  <a href="{{ route('logout') }}"  class="dropdown-item" onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
-                  </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                  </form>
+                  <a href="{{ route('logout') }}"  class="btn btn-default btn-flat" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
                 </div>
               </li>
             </ul>
