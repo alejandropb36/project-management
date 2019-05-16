@@ -20,7 +20,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
 
-            <h3 class="box-title"></h3>
+            <h3 class="box-title">Listado de tareas</h3>
             <div class="pull-right">
 
               <a href="{{route('homeworks.create')}}"><button class="btn btn-success"><i class="fas fa-file-text"></i> Nuevo tarea</button></a>
@@ -32,7 +32,7 @@
                 <main class="py-4">
 
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table table-striped table-bordered table-hover">
                       <thead>
                           <tr>
                               <th>ID</th>

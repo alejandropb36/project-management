@@ -23,8 +23,6 @@
             <!-- name box-->
             <h3 class="box-title">{{ $homework->name }}</h3>
             <div class="pull-right">
-              <!-- button -->
-              <!-- <a href="{{route('projects.create')}}"><button class="btn btn-success"><i class="fas fa-file-text"></i> Nuevo Proyecto</button></a> -->
             </div>
           </div>
           <div class="box-body">
@@ -32,7 +30,6 @@
               <div class="col-md-12">
                 <main class="py-4">
                   <div class="table-responsive">
-
                     <table class="table">
                         <thead>
                             <tr>
