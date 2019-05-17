@@ -25,10 +25,9 @@ class ProjectTableSeeder extends Seeder
         //         'start_date' => date('Y-m-d')
         //     ));
         // }
-        $projects = factory(App\Project::class, 5)->make();
-        foreach($projects as $project){
+        $projects = factory(App\Project::class, 5)->create()->each(function ($project) {
             $project->save();
-        }
+        });
 
     }
 }
