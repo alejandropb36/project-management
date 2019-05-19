@@ -70,5 +70,4 @@
 @include('project.users')
 {{-- Listado de tareas --}}
 @include('project.homeworks')
-
 @endsection

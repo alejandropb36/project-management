@@ -27,16 +27,18 @@
                 </thead>
                 <tbody>
                     @foreach($homeworks as $homework)
-                        <tr>
-                            <td> {{ $homework->id }} </td>
-                            <td> {{ $homework->name }} </td>
-                            <td> {{ $homework->status }} </td>
-                            <td> {{ $homework->project_id }} </td>
-                            <td> {{ $homework->user_id }} </td>
-                            <td>
-                                <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
-                            </td>
-                        </tr>
+                        @if($homework->user_id==Auth::user()->id)
+                            <tr>
+                                <td> {{ $homework->id }} </td>
+                                <td> {{ $homework->name }} </td>
+                                <td> {{ $homework->status }} </td>
+                                <td> {{ $homework->project_id }} </td>
+                                <td> {{ $homework->user_id }} </td>
+                                <td>
+                                    <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
+                                </td>
+                            </tr>
+                        @endif   
                     @endforeach
                 </tbody>
             </table>
