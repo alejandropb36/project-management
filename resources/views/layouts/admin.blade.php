@@ -124,11 +124,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href=" {{route('projects.index')}} ">
               <i class="fas fa-folder-open"></i> <span>Proyectos</span>
             </a>
-          </li>
-        {{-- <li class="treeview">
-          <a href="#"><i class="fas fa-address-card"></i> <span>Usuarios</span></a>
-        </li>--}}
-      </ul>
+        </li>
+        <li>
+          <a href=" {{route('homeworks.index')}} ">
+            <i class="fas fa-tasks"></i></i> <span>Homeworks</span>
+          </a>
+      </li>
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

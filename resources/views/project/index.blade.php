@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
-    <?php $npagina= "PROYECTOS"?>
     <div class="col-lg-10 col-md-10 col-sd-10 col-xs-10 ">
         <div class="card">
           <div class="card-header">

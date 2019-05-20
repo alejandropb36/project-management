@@ -28,11 +28,6 @@
                             <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
                         </td>
                     </tr>
-                    {{--@else
-                    <font color="red">
-                        <h3 class="card-title" align="center">Ninguna Tarea Asignada</h3>
-                    </font>--}}
-                    {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>
