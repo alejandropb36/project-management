@@ -25,8 +25,10 @@ class ProjectTableSeeder extends Seeder
         //         'start_date' => date('Y-m-d')
         //     ));
         // }
-        $projects = factory(App\Project::class, 5)->create()->each(function ($project) {
-            $project->save();
+        $projects = factory(App\Project::class, 5)
+            ->create()
+            ->each(function ($project) {
+                $project->users()->save(factory(App\User::class)->make(), ['user_role' => 'Lider']);
         });
 
     }
