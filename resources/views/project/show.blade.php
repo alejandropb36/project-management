@@ -72,9 +72,4 @@
     @include('project.homeworks')
 </div>
 
-{{-- Listado de usuarios --}}
-@include('project.users')
-{{-- Listado de tareas --}}
-@include('project.homeworks')
-
 @endsection
