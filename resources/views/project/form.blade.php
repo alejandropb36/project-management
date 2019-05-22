@@ -13,7 +13,15 @@
         <div class="col-lg-11 col-md-11 col-sd-11 col-xs-11 ">
             <div class="card">
                 <div class="card-header">
-                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     @if(isset($project))
@@ -27,7 +35,7 @@
                         <div class="form-group ">
                             <label class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="name" 
-                                value=" {{ isset($project) ? $project->name : '' }}{{ old('project') }} "
+                                value="{{ isset($project) ? $project->name : '' }}{{ old('project') }}"
                                 placeholder="Nombre del proyecto">
                         </div>
 
@@ -41,16 +49,13 @@
                         <div class="form-group ">
                             <label class="form-label">Estatus</label>
                             <select name="status"  class="form-control">
-                                <option value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}" selected disabled>
-                                    {{ isset($project) ? $project->status : '' }}{{ old('project') }}
+                                <option value="{{ isset($project) ? $project->status : 'Activo' }}{{ old('project') }}" selected>
+                                    {{ isset($project) ? $project->status : 'Activo' }}{{ old('project') }}
                                 </option>
                                 <option value="Activo">Activo</option>
                                 <option value="Terminado">Terminado</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
-                            {{-- <input type="text" class="form-control" name="description"
-                                value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}"
-                                placeholder="Descripción del proyecto"> --}}
                         </div>
 
                         <div class="form-group">

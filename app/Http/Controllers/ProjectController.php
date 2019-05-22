@@ -46,6 +46,14 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $validate = $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'status' => 'required|string|max:25',
+            'satart_date' => 'date',
+            'end_date' => 'date|nullable',
+        ]);
         $user = $user = \Auth::user();
         $project = new Project();
 
@@ -103,6 +111,13 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         //
+        $validate = $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'status' => 'required|string|max:25',
+            'satart_date' => 'date',
+            'end_date' => 'date|nullable',
+        ]);
         $project->name = $request->input('name');
         $project->description = $request->input('description');
         $project->status = $request->input('status');
@@ -143,6 +158,11 @@ class ProjectController extends Controller
      * Store relationship project_user
      */
     public function storeProjectUser(Request $request){
+        $validate = $this->validate($request, [
+            'project_id' => 'required',
+            'user_id' => 'required',
+            'user_role' => 'required|string|max:255',
+        ]);
         $project_id = $request->input('project_id');
         $user_id = $request->input('user_id');
         $user_role = $request->input('user_role');
@@ -172,6 +192,12 @@ class ProjectController extends Controller
      * Update rol del usuario
      */
     public function updateUserRole(Request $request){
+
+        $validate = $this->validate($request, [
+            'project_id' => 'required',
+            'user_id' => 'required',
+            'user_role' => 'required|string|max:255',
+        ]);
 
         $project_id = $request->input('project_id');
         $user_id = $request->input('user_id');

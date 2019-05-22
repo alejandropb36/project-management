@@ -46,6 +46,14 @@ class HomeworkController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'project_id' => 'required',
+            'user_id' => 'required',
+            'satart_date' => 'date',
+            'end_date' => 'date|nullable',
+        ]);
         $homework = new Homework();
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
@@ -94,6 +102,14 @@ class HomeworkController extends Controller
      */
     public function update(Request $request, Homework $homework)
     {
+        $validate = $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'project_id' => 'required',
+            'user_id' => 'required',
+            'satart_date' => 'date',
+            'end_date' => 'date|nullable',
+        ]);
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
         $homework->status = "ACTIVO";

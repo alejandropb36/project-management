@@ -9,7 +9,15 @@
         <div class="col-lg-11 col-md-11 col-sd-11 col-xs-11 ">
             <div class="card">
                 <div class="card-header">
-                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <form action=" {{ route('projects.updateUserRole') }} " method="POST" >
