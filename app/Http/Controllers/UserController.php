@@ -11,6 +11,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
+use App\User;
+
 class UserController extends Controller
 {
     //
@@ -54,6 +56,7 @@ class UserController extends Controller
         // Subir la imagen
         $image = $request->file('image');
         if($image){
+            Storage::disk('users')->delete($user->image);
             // Nombre unico
             $image_name = time() . $image->getClientOriginalName();
             // Guardar en la carpeta storage (storage/app/users)
@@ -66,6 +69,18 @@ class UserController extends Controller
         return redirect()->route('config')
                         ->with(['message' => 'El usuario se actualizo correctamente']);
     }
+
+
+    public function destroyImage(User $user)
+    {
+        Storage::disk('users')->delete($user->image);
+        $user->image = null;
+        $user->update();
+
+        return redirect()->route('config')
+                ->with(['message' => 'La imagen de usuario se elimino correctamente']);
+    }
+
 
     public function getImage($filename){
         $file = Storage::disk('users')->get($filename);

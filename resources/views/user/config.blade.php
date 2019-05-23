@@ -79,12 +79,13 @@
                             <div class="col-md-6">
                                 @include('includes.avatar')
                                 <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
-
+                                
                                 @if ($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
+                                
                             </div>
                         </div>
 
@@ -96,6 +97,17 @@
                             </div>
                         </div>
                     </form>
+                    <div class="form-group row mb-0">
+                        
+                        @if(Auth::user()->image)
+                            <form action="{{ route('user.destroyImage', Auth::user()->id) }}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Borrar Imagen</button>
+                            </form>
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>

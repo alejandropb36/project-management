@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'ProjectController@index')->name('home')->middleware('verified');
-
+/**
+ * Rutas de Tareas
+ */
 Route::resource('/projects', 'ProjectController');
 Route::resource('/homeworks', 'HomeworkController');
 Route::get('/create/{project}', 'HomeworkController@create')->name('homeworks.createnp');
@@ -42,4 +44,5 @@ Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectControl
 Route::get('/configuracion', 'UserController@config')->name('config');
 Route::post('/user/update', 'UserController@update')->name('user.update');
 Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('user.avatar');
+Route::delete('/user/configuracion/destroyImage/{user}', 'UserController@destroyImage')->name('user.destroyImage');
 Auth::routes(['verify' => true]);
