@@ -8,4 +8,12 @@ class Homework extends Model
 {
     // Table
     protected $table = 'homeworks';
+    
+    protected $guarded = ['id'];
+    
+    protected $fillable = [
+        'name',
+        'description',
+        'status'
+    ];
 }
