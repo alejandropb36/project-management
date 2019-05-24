@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
@@ -16,6 +17,8 @@ class Project extends Model
         'description',
         'status'
     ];
+    
+    use SoftDeletes;
 
     //Relacion One to many /  de uno a muchos
     public function homeworks()
