@@ -234,4 +234,10 @@ class ProjectController extends Controller
         return redirect()->route('projects.show', $project->id)
                         ->with(['message' => 'Usuario eliminado correctamente']);
     }
+
+    public function indexAdmin(){
+        $projects = Project::withTrashed();
+
+        return view('project.admin', compact('projects'));
+    }
 }
