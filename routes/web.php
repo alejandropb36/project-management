@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'ProjectController@index')->name('home');
 
-Route::resource('/projects', 'ProjectController');
-Route::resource('/homeworks', 'HomeworkController');
+
+
 Route::get('/create/{project}', 'HomeworkController@create')->name('homeworks.createnp');
 
 /**
@@ -42,3 +42,9 @@ Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectControl
 Route::get('/configuracion', 'UserController@config')->name('config');
 Route::post('/user/update', 'UserController@update')->name('user.update');
 Route::get('/user/avatar/{filename}', 'UserController@getImage')->name('user.avatar');
+
+/**
+ * Rutas Homeworks
+ *
+ */
+Route::resource('/homeworks', 'HomeworkController');

@@ -55,6 +55,20 @@
                                 value="{{ isset($homework) ? $homework->description : '' }}{{ old('homework') }}"
                                 placeholder="Descripción de la homework">
                         </div>
+                        <div class="form-group ">
+                                <label class="form-label">Estatus</label>
+                                <select name="status"  class="form-control">
+                                    <option value="{{ isset($homework) ? $homework->status : '' }}{{ old('homework') }}" selected disabled>
+                                        {{ isset($homework) ? $homework->status : '' }}{{ old('homework') }}
+                                    </option>
+                                    <option value="Activo">ACTIVO</option>
+                                    <option value="Terminado">TERMINADO</option>
+                                    <option value="Inactivo">INACTIVO</option>
+                                </select>
+                                {{-- <input type="text" class="form-control" name="description"
+                                    value="{{ isset($project) ? $project->status : '' }}{{ old('project') }}"
+                                    placeholder="Descripción del proyecto"> --}}
+                        </div>
 
                         <div class="form-group ">
                             <label class="form-label">Avance</label>

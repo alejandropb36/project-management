@@ -10,9 +10,26 @@
                 </div>
             @endif
             <h3 class="card-title">Listado de Tareas</h3>
-            <a href="{{route('homeworks.create')}}">
-                <button class="btn btn-success">Nueva</button>
-            </a>
+            <div class='container'>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="page-header">
+                            <h2>
+                                <form action="{{route('homeworks.index')}}" method="GET" class="form-inline pull-right">
+                                    <div class="form-group">
+                                        <input type="text" name="status" class="form-control" placeholder="status">
+                                    </div>
+                                    <div class='form-group'>
+                                        <button type="submit" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                    </div>
+                                </form>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>
           <div class="card-body">
             <table class="table">
@@ -33,13 +50,11 @@
                             <td> {{ $homework->status }} </td>
                             <td> {{ $homework->project_id }} </td>
                             <td> {{ $homework->user_id }} </td>
-                            <td>
-                                <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{$homeworks->links()}}
           </div>
         </div>
     </div>

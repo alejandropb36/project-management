@@ -14,11 +14,15 @@ class HomeworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $status = $request->get('status');
+
         $homeworks = Homework::all();
-        return view('homeworks.index', compact('homeworks'));
+        $homeworks = Homework::status($status)->paginate(3);
+        return view('homework.index', compact('homeworks'));
     }
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -31,11 +35,7 @@ class HomeworkController extends Controller
     public function create(Project $project)
     {
         $users = User::all();
-        /*$project = Project::all();*/
-        /*return view('homeworks.form', compact('project'));*/
-        /*$project = $this->project;
-        $users = $project->users;*/
-        return view('homeworks.form', compact('users','project'));
+        return view('homework.form', compact('users','project'));
     }
 
     /**
@@ -49,14 +49,14 @@ class HomeworkController extends Controller
         $homework = new Homework();
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
-        $homework->status = "ACTIVO";
+        $homework->status = $request->input('status');
         $homework->project_id = $request->input('project_id');
         $homework->user_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->save();
-        return redirect()->route('homeworks.index');
+        return redirect()->route('homework.index');
     }
 
     /**
@@ -67,7 +67,7 @@ class HomeworkController extends Controller
      */
     public function show(Homework $homework)
     {
-        return view('homeworks.show', compact('homework'));
+        return view('homework.show', compact('homework'));
     }
 
     /**
@@ -79,12 +79,8 @@ class HomeworkController extends Controller
     public function edit(Homework $homework,Project $project)
     {
         $users = User::all();
-        return view('homeworks.form', compact('homework','users','project'));
+        return view('homework.form', compact('homework','users','project'));
     }
-
-
-    
-
     /**
      * Update the specified resource in storage.
      *
@@ -96,14 +92,14 @@ class HomeworkController extends Controller
     {
         $homework->name = $request->input('name');
         $homework->description = $request->input('description');
-        $homework->status = "ACTIVO";
+        $homework->status = $request->input('status');
         $homework->project_id = $request->input('project_id');
         $homework->user_id = $request->input('user_id');
         $homework->document = $request->input('document');
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->update();
-        return redirect()->route('homeworks.show', $homework->id)
+        return redirect()->route('homework.show', $homework->id)
                          ->with(['message' => 'La tarea se atualizo correctamente']); 
     }
 
@@ -117,7 +113,7 @@ class HomeworkController extends Controller
     {
         //
         $homework->delete();
-        return redirect()->route('homeworks.index')
+        return redirect()->route('homework.index')
                         ->with(['message' => 'Tarea eliminada correctamente']);
     }
 }

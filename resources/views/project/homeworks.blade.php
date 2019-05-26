@@ -15,24 +15,36 @@
                 <a href="{{route('homeworks.createnp', $project->id)}}">
                         <button class="btn btn-success">Nueva</button>
                 </a>
-                @foreach($project->homeworks as $homework)
-                    {{-- @if($homework->user_id==Auth::user()->id) --}}
-                    <tr>
-                        <td> {{ $homework->id }} </td>
-                        <td> {{ $homework->name }} </td>
-                        <td> {{ $homework->status }} </td>
-                        <td> {{ $homework->project_id }} </td>
-                        <td> {{ $homework->user_id }} </td>
-                        <td>
-                            <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
-                        </td>
-                    </tr>
-                    {{--@else
-                    <font color="red">
-                        <h3 class="card-title" align="center">Ninguna Tarea Asignada</h3>
-                    </font>--}}
-                    {{-- @endif --}}
-                @endforeach
+                @if ($user_role == 'Colaborador')
+                    @foreach($project->homeworks as $homework)
+                        @if($homework->user_id==Auth::user()->id)
+                        <tr>
+                            <td> {{ $homework->id }} </td>
+                            <td> {{ $homework->name }} </td>
+                            <td> {{ $homework->status }} </td>
+                            <td> {{ $homework->project_id }} </td>
+                            <td> {{ $homework->user_id }} </td>
+                            <td>
+                                <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
+                            </td>
+                        </tr>
+                        @endif
+                    @endforeach
+                @else
+                    @foreach($project->homeworks as $homework)
+                        <tr>
+                            <td> {{ $homework->id }} </td>
+                            <td> {{ $homework->name }} </td>
+                            <td> {{ $homework->status }} </td>
+                            <td> {{ $homework->project_id }} </td>
+                            <td> {{ $homework->user_id }} </td>
+                            <td>
+                                <a href=" {{route('homeworks.show', $homework->id)}} "> <button class="btn btn-info">Detalle</button> </a>
+                            </td>
+                        </tr>
+                    @endforeach                  
+                @endif
+
             </tbody>
         </table>
       </div>

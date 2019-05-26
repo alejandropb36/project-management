@@ -20,9 +20,9 @@
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        @if ($user_role == 'Lider')
+                        @can('opc-adm',$user_role)
                             <th>Opciones</th>
-                        @endif
+                        @endcan    
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +40,7 @@
                         <td> {{ $user->name }} </td>
                         <td> {{ $user->email }} </td>
                         <td> {{ $user->pivot->user_role }} </td>
-                        @if($user_role == "Lider")
+                        @can('opc-adm',$user_role)
                             <td>
                                 <a href=" {{ route('projects.editUserRole', ['project' => $project, 'user' => $user]) }} "> <button class="btn btn-warning">Editar</button> </a>
                                 {{-- Para eliminar utilizando los metodos HTTP correctamente
@@ -51,7 +51,7 @@
                                     <button type="submit" class="btn btn-danger">Borrar</button>
                                 </form>
                             </td>
-                        @endif
+                        @endcan
                         
                         
                         

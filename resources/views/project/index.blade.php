@@ -26,7 +26,6 @@
                 </thead>
                 <tbody>
                     @foreach($projects as $project)
-                        
                         <tr>
                             <td> {{ $project->id }} </td>
                             <td> {{ $project->name }} </td>
@@ -39,7 +38,6 @@
                     @endforeach
                 </tbody>
             </table>
-
           </div>
         </div>
     </div>
