@@ -1,6 +1,4 @@
-
-<!--Misael  -->
-      <div class="box box-primary">
+<div class="box box-primary">
         <div class="box-header with-border">
           <!-- name box-->
           <h3 class="box-title"><i class="fas fa-users"></i> Usuarios</h3>
@@ -21,9 +19,9 @@
                               <th>Nombre</th>
                               <th>Email</th>
                               <th>Rol</th>
-                              @if ($user_role == 'Lider')
+                              @can('opc-adm',$user_role)
                                   <th>Opciones</th>
-                              @endif
+                              @endcan
                           </tr>
                       </thead>
                       <tbody>
@@ -43,7 +41,7 @@
                               <td> {{ $user->name }} </td>
                               <td> {{ $user->email }} </td>
                               <td> {{ $user->pivot->user_role }} </td>
-                              @if($user_role == "Lider")
+                              @can('opc-adm',$user_role)
                                   <td>
                                       <form action=" {{ route('projects.destroyProjectUser', ['project' => $project, 'user' => $user]) }}" method="POST">
                                     <a href=" {{ route('projects.editUserRole', ['project' => $project, 'user' => $user]) }} "> <button type="button" class="btn btn-warning"><i class="fas fa-pencil-square-o">  </i></button></a>
@@ -53,7 +51,7 @@
                                         </form>
 
                                   </td>
-                              @endif
+                              @endcan
                           </tr>
                           @endforeach
                       </tbody>

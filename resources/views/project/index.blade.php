@@ -1,4 +1,3 @@
-<!-- Misael -->
 @extends('layouts.admin')
 @section('content')
 <?php $npagina= "PROYECTOS"?>

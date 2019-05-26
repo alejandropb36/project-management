@@ -43,9 +43,9 @@
                             <th>Estatus</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha de termino</th>
-                            @if($user_role == "Lider")
+                              @can('opc-adm',$user_role)
                                 <th>Opciones</th>
-                            @endif
+                              @endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +56,7 @@
                             <td> {{ $project->status }} </td>
                             <td> {{ $project->start_date }} </td>
                             <td> {{ $project->end_date }} </td>
-                            @if($user_role == "Lider")
+                            @can('opc-adm',$user_role)
                                 <td>
                                     {{-- Esto fue parte de una prueba para comprobar el role
                                         {{$user_role}}
@@ -71,7 +71,7 @@
                                         <button type="submit" class="btn btn-danger">Borrar</button>
                                     </form>
                                 </td>
-                            @endif
+                            @endcan
                         </tr>
                     </tbody>
                 </table>

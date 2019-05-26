@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
+    <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         {{-- Esto es para hacer un menu desplegable  --}}
@@ -123,9 +123,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li><a href="#">En proceso</a></li>
           </ul>
         </li> --}}
-        <li>
-            <a href=" {{route('projects.index')}} ">
-              <i class="fas fa-folder-open"></i> <span>Proyectos</span>
+        <li class="">
+            <a href="{{route('projects.index')}}">
+              <i class="fas fa-folder-open"></i><span>  Proyectos</span>
             </a>
         </li>
         <li>
