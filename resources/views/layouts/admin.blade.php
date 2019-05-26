@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  
+
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -53,7 +53,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Messages: style can be found in dropdown.less-->
           <!-- Tasks Menu -->
           <li class="nav-link">
-            @include('includes.avatar')
+            <div class="container-avatar">
+              @include('includes.avatar')
+            </div>
           </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
@@ -67,7 +69,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ route('user.avatar', ['filename' => Auth::user()->image])}}" class="img-circle" alt="User Image">
+                @include('includes.avatar')
+                <!-- <img src="{{ route('user.avatar', ['filename' => Auth::user()->image])}}" class="img-circle" alt="User Image"> -->
                 <p>
                   {{ Auth::user()->name }}
                 </p>
@@ -91,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-        
+
         </ul>
       </div>
     </nav>
@@ -135,76 +138,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      {{-- <h1>
-        Contenido
-        <small>Cuerpo de la pagina</small>
-      </h1> --}}
-    </section>
+<!-- contenido dinamico  -->
+@yield('content')
+<!--fin contenido -->
 
-    <!-- Main content -->
-    <section class="content container-fluid">
-
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-        <!-- ------------ Main Box ---------------------------- -->
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">DETALLADO</h3>
-              <div class="box-tools pull-right">
-
-              {{-- ### Esto es del minimizado y demas ### --}}
-
-              {{-- <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div> --}}
-
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                
-                 <!-- Optionally, you can add Slimscroll and FastClick plugins.
-                  Both of these plugins are recommended to enhance the
-                  user experience. -->
-                <div class="col-md-12">
-                  <main class="py-4">
-                    @yield('content')
-                  </main>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
-            
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-          <!-- ------------ ./ Main Box ---------------------------- -->
-        </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
   <footer class="main-footer">
