@@ -67,9 +67,10 @@
                             value=" {{ isset($homework) ? $homework->user_id : '' }}{{ old('homework') }}"placeholder="ID Usuario">--}}
                             <select class="form-control" name="user_id">
                             @if(isset($homework))
-                                @foreach($users as $user)
-                                    <option value="{{$homework->user_id}}">{{$homework->user_id}}</option>
-                                @endforeach
+                                    <option value="{{$homework->user_id}}"></option>
+                                    @foreach($users as $user)
+                                    <option value="{{$user->id}}"> {{$user->name}} </option>
+                                    @endforeach
                             @else
                                 @foreach($users as $user)
                                     <option value="{{$user->id}}"> {{$user->name}} </option>
