@@ -26,9 +26,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <a href="{{route('homeworks.createnp', $project->id)}}">
-                                    <button class="btn btn-success">Nueva</button>
-                            </a>
                             @if ($user_role == 'Colaborador')
                                 @foreach($project->homeworks as $homework)
                                     @if($homework->user_id==Auth::user()->id)

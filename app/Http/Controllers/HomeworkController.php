@@ -64,7 +64,7 @@ class HomeworkController extends Controller
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->save();
-        return redirect()->route('homework.index');
+        return redirect()->route('homeworks.index');
     }
 
     /**
@@ -103,6 +103,7 @@ class HomeworkController extends Controller
             'description' => 'required|string|max:255',
             'project_id' => 'required',
             'user_id' => 'required',
+            'status' => 'required',
             'satart_date' => 'date',
             'end_date' => 'date|nullable',
         ]);
@@ -115,11 +116,7 @@ class HomeworkController extends Controller
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->update();
-<<<<<<< HEAD
-        return redirect()->route('projects.show', $homework->id)
-=======
-        return redirect()->route('homework.show', $homework->id)
->>>>>>> Gates-Polices
+        return redirect()->route('homeworks.show', $homework->id)
                          ->with(['message' => 'La tarea se atualizo correctamente']); 
     }
 
@@ -133,7 +130,7 @@ class HomeworkController extends Controller
     {
         //
         $homework->delete();
-        return redirect()->route('homework.index')
+        return redirect()->route('homeworks.index')
                         ->with(['message' => 'Tarea eliminada correctamente']);
     }
 }
