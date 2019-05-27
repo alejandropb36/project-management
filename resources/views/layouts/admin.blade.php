@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <i class="fas fa-tasks"></i></i> <span>Homeworks</span>
           </a>
         </li>
-        @if (\Auth::user()->nick == 'admin')
+        @if (\Auth::user()->nick == 'ADMIN')
           <li>
             <a href=" {{route('projects.indexAdmin')}} ">
               <i class="fas fa-tasks"></i></i> <span>Projects Admin</span>

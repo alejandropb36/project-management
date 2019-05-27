@@ -17,7 +17,7 @@ class ProjectsAdmin
     {
         $user = \Auth::user();
         
-        if($user->nick != 'admin'){
+        if($user->nick != 'ADMIN'){
             return redirect()->route('projects.index');
                         //->with(['error' => 'No tiene permisos para entrar a esa ruta.']);
         }
