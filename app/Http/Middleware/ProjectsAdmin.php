@@ -16,12 +16,11 @@ class ProjectsAdmin
     public function handle($request, Closure $next)
     {
         $user = \Auth::user();
-        if($user->nick == 'admin'){
-            return $next($request);
-        }
-        else{
+        
+        if($user->nick != 'admin'){
             return redirect()->route('projects.index')
                         ->with(['error' => 'No tiene permisos para entrar a esa ruta.']);
         }
+        return $next($request);
     }
 }

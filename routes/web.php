@@ -38,8 +38,8 @@ Route::post('/projects/update-user-role', 'ProjectController@updateUserRole')->n
 Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectController@destroyProjectUser')
     ->name('projects.destroyProjectUser');
 Route::get('/projects/admin', 'ProjectController@indexAdmin')
-    ->name('projects.indexAdmin')
-    ->middleware('ProjectsAdmin');
+    ->name('projects.indexAdmin');
+    //->middleware('ProjectsAdmin');
 
 /**
  * Rutas de Usuarios

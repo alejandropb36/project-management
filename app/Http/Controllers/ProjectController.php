@@ -235,7 +235,7 @@ class ProjectController extends Controller
 
     public function indexAdmin(){
         $projects = Project::withTrashed();
-
-        return view('project.admin', compact('projects'));
+        die("Hola");
+        return view('project.indexAdmin', compact('projects'));
     }
 }

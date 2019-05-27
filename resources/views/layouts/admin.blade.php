@@ -132,7 +132,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href=" {{route('homeworks.index')}} ">
             <i class="fas fa-tasks"></i></i> <span>Homeworks</span>
           </a>
-      </li>
+        </li>
+        @if (\Auth::user()->nick == 'admin')
+          <li>
+            <a href=" {{route('projects.indexAdmin')}} ">
+              <i class="fas fa-tasks"></i></i> <span>Projects Admin</span>
+            </a>
+          </li>
+        @endif
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

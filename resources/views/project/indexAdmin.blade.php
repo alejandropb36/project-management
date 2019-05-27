@@ -21,6 +21,9 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Estatus</th>
+                        <th>Creación</th>
+                        <th>Actualización</th>
+                        <th>Eliminación</th>
                         <th>Detalle</th>
                     </tr>
                 </thead>
@@ -31,6 +34,9 @@
                             <td> {{ $project->id }} </td>
                             <td> {{ $project->name }} </td>
                             <td> {{ $project->status }} </td>
+                            <td> {{ $project->create_at }} </td>
+                            <td> {{ $project->update_at }} </td>
+                            <td> {{ $project->delete_at }} </td>
                             <td>
                                 <a href=" {{route('projects.show', $project->id)}} "> <button class="btn btn-info">Detalle</button> </a>
                                 <a href=" {{ route('projects.edit', $project->id) }} "> <button class="btn btn-warning">Editar</button> </a>
