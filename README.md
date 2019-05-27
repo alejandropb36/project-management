@@ -9,13 +9,13 @@ Administrador de tareas en laravel
 Debemos de ir a la página: https://github.com/alejandropb36/project-management, y descargar el proyecto en .zip.
 ![Imagen de descarga](img-readme/descarga.jpg "Descargar")
 
-## 2. Decomprimir el proyecto en la carpeta publica de tu web-server.
+## 2. Descomprimir el proyecto en la carpeta publica de tu web-server.
 ![Imagen de descompresión](img-readme/descomprimir.jpg "Descomprimir")
 Se nos generara una nueva carpeta.
 
 ![Nueva carpeta](img-readme/carpeta-descomprimida.jpg "nueva carpeta")
 
-## 3. Abrir una terminal en la ruta de la nuev carpeta.
+## 3. Abrir una terminal en la ruta de la nueva carpeta.
 ![Terminal](img-readme/terminal.jpg "Terminal")
 
 ## 4. Crear el archivo de configuración del proyecto (.env)
@@ -73,6 +73,12 @@ Esto nos servira pra no tener problemas son los Seeders.
 Despues generamos el usuario Admin, para eso corremos el siguiente comando:
 
     php artisan db:seed --class=AdminUserSeeder
+
+El usuairio Admin es:
+
+email: admin@admin.com
+
+password: admin123
 
 Si queremos Generar unos datos de prueba, debemos ejecutare el siguiente comando:
 
