@@ -64,7 +64,7 @@ class HomeworkController extends Controller
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->save();
-        return redirect()->route('homeworks.index');
+        return redirect()->route('projects.show', $homework->project_id);
     }
 
     /**
@@ -116,7 +116,7 @@ class HomeworkController extends Controller
         $homework->start_date = $request->input('start_date');
         $homework->end_date = $request->input('end_date');
         $homework->update();
-        return redirect()->route('homeworks.show', $homework->id)
+        return redirect()->route('projects.show', $homework->project_id)
                          ->with(['message' => 'La tarea se atualizo correctamente']); 
     }
 
@@ -133,4 +133,5 @@ class HomeworkController extends Controller
         return redirect()->route('homeworks.index')
                         ->with(['message' => 'Tarea eliminada correctamente']);
     }
+    
 }

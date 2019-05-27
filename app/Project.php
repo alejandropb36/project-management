@@ -28,4 +28,12 @@ class Project extends Model
     public function users(){
         return $this->belongsToMany(User::class)->withPivot('user_role')->withTimestamps();
     }
+    public function setNameAttribute($value)//Muttator  
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
+    public function getDescriptionAttribute($value)//Accesor
+    {
+        return strtolower($value);
+    }
 }

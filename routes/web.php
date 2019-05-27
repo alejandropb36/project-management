@@ -23,7 +23,6 @@ Route::get('/home', 'ProjectController@index')->name('home')->middleware('verifi
 /**
  * Rutas de Tareas
  */
-Route::resource('/projects', 'ProjectController');
 Route::resource('/homeworks', 'HomeworkController');
 Route::get('/create/{project}', 'HomeworkController@create')->name('homeworks.createnp');
 
