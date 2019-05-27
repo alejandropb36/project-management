@@ -24,7 +24,6 @@ class CreateHomeworksTable extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->timestamps();
-
             $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('user_id')->references('id')->on('users');
         });

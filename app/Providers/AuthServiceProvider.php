@@ -24,7 +24,15 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Gate::define('opc-adm', function ($user, $user_role)
+        {
+            // return $user->projects()->where('projects.id',$project->id)->first()->pivot->user_role == 'Lider';
+            return $user_role == 'Lider';
+        });
 
-        //
+        // Gate::define('opc-col', function ($project_user)
+        // {
+        //     return $project_user->user_role == 'Colaborador';
+        // });
     }
 }

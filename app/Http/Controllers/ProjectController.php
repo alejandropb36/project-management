@@ -23,7 +23,6 @@ class ProjectController extends Controller
         $user = \Auth::user();
         $projects = $user->projects;
         return view('project.index', compact('projects'));
-        
     }
     
     /**
@@ -56,7 +55,6 @@ class ProjectController extends Controller
         ]);
         $user = $user = \Auth::user();
         $project = new Project();
-
         $project->name = $request->input('name');
         $project->description = $request->input('description');
         $project->status = $request->input('status');

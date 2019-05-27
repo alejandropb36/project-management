@@ -19,7 +19,6 @@ class CreateProjectUserTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->string('user_role');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
         });

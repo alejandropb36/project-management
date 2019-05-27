@@ -1,5 +1,5 @@
 @if(Auth::user()->image)
-    <div class="container-avatar">
-        <img src=" {{ route('user.avatar', ['filename' => Auth::user()->image])}} " alt="Avatar de usuario" class="avatar">
-    </div>
+        <img src=" {{ route('user.avatar', ['filename' => Auth::user()->image])}} " alt="Avatar de usuario" >
+@else
+    <img src="https://www.assetworks.com/wp-content/uploads/2016/10/businessman.png">
 @endif
