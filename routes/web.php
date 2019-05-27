@@ -36,6 +36,9 @@ Route::get('/projects/edit-user-role/{project}/{user}', 'ProjectController@editU
 Route::post('/projects/update-user-role', 'ProjectController@updateUserRole')->name('projects.updateUserRole');
 Route::delete('/projects/destroy-project-user/{project}/{user}', 'ProjectController@destroyProjectUser')
     ->name('projects.destroyProjectUser');
+Route::get('/projects-admin', 'ProjectController@indexAdmin')
+    ->name('projects.indexAdmin')
+    ->middleware('ProjectsAdmin');
 
 /**
  * Rutas de Usuarios
